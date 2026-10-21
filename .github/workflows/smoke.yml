@@ -1,0 +1,22 @@
+name: Smoke Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Greeting
+        run: echo "Smoke check started"
+      - name: Show environment
+        run: |
+          echo "Runner: ${{ runner.name }}"
+          echo "OS: ${{ runner.os }}"
+          echo "Repository: ${{ github.repository }}"
+          date
+      - name: Simple verification
+        run: |
+          echo "2 + 2 = $((2 + 2))"
+          test $((2 + 2)) -eq 4
+          echo "Smoke check completed successfully"
